@@ -33,7 +33,11 @@ This tool will appeared at "Tools" menu and "Go To" menu,  shortcut key is: ctrl
 
 而你需要做的就是快捷键ctrl+alt+\ (mac可能为mac+alt+\) 唤起插件后 填入sql -> analy -> 选择正确的输出目录 -> 生成
 
+![](https://plugins.jetbrains.com/files/7918/screenshot_15213.png)
+![](https://plugins.jetbrains.com/files/7918/screenshot_15214.png)
+
 其中, 在输出目录选择的时候, 请选择要生成代码的biz目录.  生成的路径对应关系如下
+![](https://plugins.jetbrains.com/files/7918/screenshot_15218.png)
 
 | 文件 | 生成目录 |
 | ---- | ---- |
@@ -56,7 +60,11 @@ This tool will appeared at "Tools" menu and "Go To" menu,  shortcut key is: ctrl
 
 其中对于do bo query对象的生成上 相应的复选框可以选择要关注的字段
 
+![](https://plugins.jetbrains.com/files/7918/screenshot_15219.png)
+![](https://plugins.jetbrains.com/files/7918/screenshot_15221.png)
+
 在这个之前, 你可以在setting标签页设置输出代码的author
+![](https://plugins.jetbrains.com/files/7918/screenshot_15222.png)
 
 插件安装方式可以下载后以本地方式安装 ( settings -> plugins -> Browse repositories... ), 或者去idea的插件库下载 ( settings -> plugins -> Browse repositories...) 
 
