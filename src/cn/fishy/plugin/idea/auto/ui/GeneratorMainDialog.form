@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="cn.fishy.plugin.idea.auto.ui.GeneratorMainDialog">
+  <grid id="cbd77" binding="contentPane" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="10" left="10" bottom="10" right="10"/>
+    <constraints>
+      <xy x="28" y="27" width="801" height="623"/>
+    </constraints>
+    <properties>
+      <toolTipText value="Data Persistence Layer Auto Generator  - powered by duxing@Taobao"/>
+    </properties>
+    <border type="none" title="AutoGenerator"/>
+    <children>
+      <grid id="94766" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <hspacer id="98af6">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+          <component id="27949" class="javax.swing.JTextPane" binding="TEXT_msg">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="2" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+            </constraints>
+            <properties>
+              <foreground color="-385995"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="e3588" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <tabbedpane id="8304f" binding="TAB_PANEL">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="1" use-parent-layout="false">
+                <preferred-size width="200" height="200"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <grid id="8f61" binding="PN_input" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <tabbedpane title="Input"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="17fb2" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="247" height="16"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <text value="Please Input Create Table SQL"/>
+                    </properties>
+                  </component>
+                  <component id="fc335" class="javax.swing.JTextArea" binding="INPUT_sql">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                        <minimum-size width="100" height="30"/>
+                        <preferred-size width="600" height="200"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <lineWrap value="true"/>
+                      <text value=""/>
+                      <wrapStyleWord value="true"/>
+                    </properties>
+                  </component>
+                  <vspacer id="69e83">
+                    <constraints>
+                      <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </vspacer>
+                  <hspacer id="7af47">
+                    <constraints>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <vspacer id="140a7">
+                    <constraints>
+                      <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </vspacer>
+                  <component id="50634" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value=" 2. &quot; ` &quot; can use in the sql.  Comment must surround with  &quot; ' &quot;. "/>
+                    </properties>
+                  </component>
+                  <component id="5cfc6" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value=" 1. CREATE SQL must be valid,  need looks like &quot;CREATE TABLE table (....) COMMENT 'xxx' &quot;. "/>
+                    </properties>
+                  </component>
+                  <component id="74b22" class="javax.swing.JButton" binding="BTN_analy" default-binding="true">
+                    <constraints>
+                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Analy"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="e2810" binding="PN_generator" layout-manager="GridLayoutManager" row-count="9" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <tabbedpane title="Generator"/>
+                </constraints>
+                <properties>
+                  <autoscrolls value="true"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <vspacer id="15ad8">
+                    <constraints>
+                      <grid row="8" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </vspacer>
+                  <component id="50670" class="javax.swing.JComboBox" binding="SELECT_encoding">
+                    <constraints>
+                      <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <model>
+                        <item value="GBK"/>
+                        <item value="UTF-8"/>
+                      </model>
+                    </properties>
+                  </component>
+                  <component id="8ed9e" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="93" height="16"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <text value="Output"/>
+                    </properties>
+                  </component>
+                  <component id="f073c" class="javax.swing.JComboBox" binding="SELECT_code">
+                    <constraints>
+                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <model>
+                        <item value="JAVA"/>
+                        <item value="SCALA"/>
+                      </model>
+                    </properties>
+                  </component>
+                  <component id="586aa" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="93" height="16"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <text value="Output Path"/>
+                    </properties>
+                  </component>
+                  <component id="9b23c" class="javax.swing.JTextField" binding="INPUT_path">
+                    <constraints>
+                      <grid row="3" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="9a587" class="javax.swing.JCheckBox" binding="CHK_daoLogicDel">
+                    <constraints>
+                      <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="165" height="23"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <selected value="true"/>
+                      <text value="DAO logic delete"/>
+                    </properties>
+                  </component>
+                  <component id="b3ecb" class="javax.swing.JCheckBox" binding="CHK_daoUseSeq">
+                    <constraints>
+                      <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <selected value="true"/>
+                      <text value="DAO use sequence"/>
+                    </properties>
+                  </component>
+                  <component id="2b858" class="javax.swing.JCheckBox" binding="CHK_managerUseBO">
+                    <constraints>
+                      <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="165" height="23"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <selected value="true"/>
+                      <text value="Manager use BO"/>
+                    </properties>
+                  </component>
+                  <component id="2d4ad" class="javax.swing.JCheckBox" binding="CHK_pageQuery">
+                    <constraints>
+                      <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <selected value="true"/>
+                      <text value="Pager Query"/>
+                    </properties>
+                  </component>
+                  <scrollpane id="d8cea" binding="PANEL_c">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="6" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                        <minimum-size width="600" height="100"/>
+                        <preferred-size width="600" height="200"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <verticalScrollBarPolicy value="22"/>
+                    </properties>
+                    <border type="none"/>
+                    <children/>
+                  </scrollpane>
+                  <component id="207e4" class="javax.swing.JButton" binding="BTN_do">
+                    <constraints>
+                      <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Generate DO"/>
+                    </properties>
+                  </component>
+                  <component id="8f78" class="javax.swing.JButton" binding="BTN_manager">
+                    <constraints>
+                      <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Generate Manager"/>
+                    </properties>
+                  </component>
+                  <component id="3ec06" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="93" height="16"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <text value="Table Name"/>
+                    </properties>
+                  </component>
+                  <component id="39992" class="javax.swing.JTextField" binding="INPUT_tableName">
+                    <constraints>
+                      <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="79032" class="javax.swing.JButton" binding="BTN_daoImpl">
+                    <constraints>
+                      <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Generate DAOImpl"/>
+                    </properties>
+                  </component>
+                  <component id="ccdee" class="javax.swing.JButton" binding="BTN_managerImpl">
+                    <constraints>
+                      <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Generate ManagerImpl"/>
+                    </properties>
+                  </component>
+                  <component id="607bf" class="javax.swing.JButton" binding="BTN_sqlmap">
+                    <constraints>
+                      <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Generate SQLMap"/>
+                    </properties>
+                  </component>
+                  <component id="33cd6" class="javax.swing.JButton" binding="BTN_bo">
+                    <constraints>
+                      <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Generate BO"/>
+                    </properties>
+                  </component>
+                  <component id="12f71" class="javax.swing.JButton" binding="BTN_transfer">
+                    <constraints>
+                      <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Generate Transfer"/>
+                    </properties>
+                  </component>
+                  <component id="f058e" class="javax.swing.JButton" binding="BTN_dao">
+                    <constraints>
+                      <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Generate DAO"/>
+                    </properties>
+                  </component>
+                  <component id="bcc0a" class="javax.swing.JButton" binding="BTN_query">
+                    <constraints>
+                      <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Generate Query"/>
+                    </properties>
+                  </component>
+                  <component id="244e8" class="javax.swing.JButton" binding="BTN_all">
+                    <constraints>
+                      <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Generate All"/>
+                    </properties>
+                  </component>
+                  <component id="806ae" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="93" height="16"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <text value="eg: &quot;user&quot; will create UserDO, UserManager ..."/>
+                    </properties>
+                  </component>
+                  <component id="11d39" class="javax.swing.JButton" binding="BTN_selPath">
+                    <constraints>
+                      <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="choose biz directory"/>
+                      <visible value="true"/>
+                    </properties>
+                  </component>
+                  <component id="6ff5b" class="javax.swing.JCheckBox" binding="CHK_overwrite">
+                    <constraints>
+                      <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="165" height="23"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <enabled value="true"/>
+                      <selected value="false"/>
+                      <text value="overwrite exist file"/>
+                    </properties>
+                  </component>
+                  <component id="68ccb" class="javax.swing.JCheckBox" binding="CHK_generateBase">
+                    <constraints>
+                      <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="165" height="23"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <enabled value="true"/>
+                      <selected value="false"/>
+                      <text value="generate Base"/>
+                    </properties>
+                  </component>
+                  <component id="925ce" class="javax.swing.JButton" binding="BTN_basedao">
+                    <constraints>
+                      <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Generate BaseDAO"/>
+                      <visible value="false"/>
+                    </properties>
+                  </component>
+                  <component id="a0005" class="javax.swing.JButton" binding="BTN_basequery">
+                    <constraints>
+                      <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="92" height="33"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <text value="Generate BaseQuery"/>
+                      <visible value="false"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="ed24b" layout-manager="GridLayoutManager" row-count="10" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <tabbedpane title="Notice"/>
+                </constraints>
+                <properties/>
+                <border type="none" title=""/>
+                <children>
+                  <component id="1867c" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="1. Generate Code use BaseDAO by default, and use BaseQuery by PagerQuery selected, you can generate them to"/>
+                    </properties>
+                  </component>
+                  <hspacer id="67fb3">
+                    <constraints>
+                      <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <vspacer id="50ffc">
+                    <constraints>
+                      <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </vspacer>
+                  <component id="ae703" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="2. BaseDAO use sequence to get next id, plugin use sequence of TDDL framework, TDDL is an open source project."/>
+                    </properties>
+                  </component>
+                  <component id="bafcb" class="javax.swing.JButton" binding="BTN_go">
+                    <constraints>
+                      <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="GO"/>
+                    </properties>
+                  </component>
+                  <component id="7652d" class="javax.swing.JTextField" binding="INPUT_tddl_url">
+                    <constraints>
+                      <grid row="3" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <editable value="false"/>
+                      <text value="https://github.com/alibaba/tb_tddl"/>
+                    </properties>
+                  </component>
+                  <component id="15e6f" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="4" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="3. DAO entend BaseDAO, you must config bean entend baseDAO bean in dao.xml"/>
+                    </properties>
+                  </component>
+                  <component id="66791" class="javax.swing.JButton" binding="BTN_DAOXml">
+                    <constraints>
+                      <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="dao-sample.xml"/>
+                    </properties>
+                  </component>
+                  <component id="c6c75" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="6" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="4. you must config sequences in persistence.xml"/>
+                    </properties>
+                  </component>
+                  <component id="8fb64" class="javax.swing.JButton" binding="BTN_SQLMapConfigXml">
+                    <constraints>
+                      <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="sqlmap-config-sample.xml"/>
+                    </properties>
+                  </component>
+                  <component id="50e29" class="javax.swing.JButton" binding="BTN_PersistenceXml">
+                    <constraints>
+                      <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="persistence-sample.xml"/>
+                    </properties>
+                  </component>
+                  <component id="bb55d" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="8" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <foreground color="-42947"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="72572" binding="PN_settings" layout-manager="GridLayoutManager" row-count="6" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <tabbedpane title="Settings"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="6984b" class="javax.swing.JLabel" binding="TEXT_name">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="33" height="17"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <text value="Your Name"/>
+                    </properties>
+                  </component>
+                  <component id="55573" class="javax.swing.JTextField" binding="INPUT_author" default-binding="true">
+                    <constraints>
+                      <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="50" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="f857b" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Language"/>
+                      <visible value="false"/>
+                    </properties>
+                  </component>
+                  <component id="2179" class="javax.swing.JRadioButton" binding="RADIO_languageEn">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <selected value="true"/>
+                      <text value="English"/>
+                      <visible value="false"/>
+                    </properties>
+                  </component>
+                  <component id="612f4" class="javax.swing.JRadioButton" binding="RADIO_languageChs">
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Chinese"/>
+                      <visible value="false"/>
+                    </properties>
+                  </component>
+                  <component id="881fc" class="javax.swing.JLabel" binding="TEXT_encoding">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Encoding"/>
+                    </properties>
+                  </component>
+                  <component id="a7c20" class="javax.swing.JRadioButton" binding="RADIO_encodeUTF8">
+                    <constraints>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <selected value="true"/>
+                      <text value="UTF-8"/>
+                    </properties>
+                  </component>
+                  <component id="47862" class="javax.swing.JRadioButton" binding="RADIO_encodeGBK">
+                    <constraints>
+                      <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="GBK"/>
+                    </properties>
+                  </component>
+                  <hspacer id="19e1">
+                    <constraints>
+                      <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <component id="521ab" class="javax.swing.JLabel" binding="TEXT_info">
+                    <constraints>
+                      <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="33" height="17"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <text value="use in the code generated"/>
+                    </properties>
+                  </component>
+                  <component id="ec42a" class="javax.swing.JLabel" binding="TEXT_code">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Code"/>
+                    </properties>
+                  </component>
+                  <component id="e0bbe" class="javax.swing.JRadioButton" binding="RADIO_codeJava">
+                    <constraints>
+                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <selected value="true"/>
+                      <text value="JAVA"/>
+                    </properties>
+                  </component>
+                  <component id="4143a" class="javax.swing.JRadioButton" binding="RADIO_codeScala">
+                    <constraints>
+                      <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="SCALA"/>
+                    </properties>
+                  </component>
+                  <vspacer id="86879">
+                    <constraints>
+                      <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </vspacer>
+                  <hspacer id="7336b">
+                    <constraints>
+                      <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <component id="16548" class="javax.swing.JButton" binding="BTN_apply">
+                    <constraints>
+                      <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Apply"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <scrollpane id="f47dc">
+                <constraints>
+                  <tabbedpane title="About"/>
+                </constraints>
+                <properties/>
+                <border type="none" title=""/>
+                <children>
+                  <component id="348ea" class="javax.swing.JLabel" binding="LABEL_about">
+                    <constraints/>
+                    <properties>
+                      <text resource-bundle="intro/res" key="intro"/>
+                      <verticalAlignment value="1"/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
+            </children>
+          </tabbedpane>
+        </children>
+      </grid>
+    </children>
+  </grid>
+  <buttonGroups>
+    <group name="language">
+      <member id="2179"/>
+      <member id="612f4"/>
+    </group>
+    <group name="encoding">
+      <member id="a7c20"/>
+      <member id="47862"/>
+    </group>
+    <group name="code">
+      <member id="e0bbe"/>
+      <member id="4143a"/>
+    </group>
+  </buttonGroups>
+</form>

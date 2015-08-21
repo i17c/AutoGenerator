@@ -1,0 +1,52 @@
+<idea-plugin version="2">
+  <id>com.fishy.plugin.idea.auto</id>
+  <name>Auto Generator</name>
+  <version>1.0.0</version>
+  <vendor email="i17c.net@gmail.com" url="http://weibo.com/dxkkk">独行</vendor>
+
+  <description><![CDATA[
+      Auto Generator
+      <br><br>It's a tool for auto generate Data Persistence Layer by Create Table SQL.
+      <br><br>What is "Data Persistence Layer", just contain DO, Query, DAO, Manager, And sqlmap ...
+      <br><br>I designed it just for java and scala . other languages maybe later ...
+      <br><br>The generate code will use ibatis and <a href="https://github.com/alibaba/tb_tddl" target="_blank">tddl</a> to access database.
+      <br><br>If you don't like, change it your self. of course, you also can send other framework to me .
+      <br><br>This tool will appeared at "Tools" menu and "Go To" menu,  shortcut key is: ctrl+shift+\
+      <br>
+      <br>
+      <br>Auto Generator
+      <br><br>本工具根据建表语句自动创建数据持久层.
+      <br><br>数据持久层包含DO, Query, DAO, Manager, sqlmap 等
+      <br><br>本工具只设计为生成java和scala代码, 也许以后也会有更多的代码支持
+      <br><br>生成的代码默认使用了ibatis和<a href="https://github.com/alibaba/tb_tddl" target="_blank">tddl</a>, 如果你不喜欢, 请自行生成后替换.
+      <br><br>当然, 也可以反馈给我, 其他更好的建议.
+      <br><br>本工具将在"Tools"菜单中和"Go To"菜单中会出现, 快捷键: ctrl+shift+\
+      <br>
+      <br>
+      <br><img src="https://gtms02.alicdn.com/tps/i2/TB1NvCuJXXXXXblXXXXfMzNVVXX-312-375.png" border="0" width="300" height="360">
+      <br><img src="https://gtms03.alicdn.com/tps/i3/TB1GsiXJXXXXXXQaXXXqbSXOpXX-609-433.png" border="0" width="600" height="400">
+      <br><a href="http://www.laiwang.com/" target="_blank"><img src="https://i01.lw.aliimg.com/tfs/TB15JfxGXXXXXcrXFXXXCDWUVXXLAIWANGi_1_1136_1136.jpg" border="0" width="120" height="120"></a>
+
+    ]]></description>
+
+  <change-notes><![CDATA[
+      2015.8.18. v1.0.0 project create<br>
+    ]]>
+  </change-notes>
+
+  <idea-version since-build="107.105"/>
+
+  <extensions defaultExtensionNs="com.intellij">
+      <applicationService serviceImplementation="cn.fishy.plugin.idea.auto.storage.PluginConfigHolder"/>
+      <projectService serviceImplementation="cn.fishy.plugin.idea.auto.storage.PluginProjectConfigHolder"/>
+  </extensions>
+
+  <actions>
+    <action id="AutoGenerator" class="cn.fishy.plugin.idea.auto.ShowDialog" icon="/icons/auto.png" text="Auto Generator">
+      <add-to-group group-id="ToolsMenu" anchor="first"/>
+      <add-to-group group-id="EditorPopupMenu.GoTo" anchor="last"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift BACK_SLASH"/>
+    </action>
+  </actions>
+
+</idea-plugin>
