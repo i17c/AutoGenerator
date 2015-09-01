@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>com.fishy.plugin.idea.auto</id>
   <name>Auto Generator</name>
-  <version>1.0.0</version>
+  <version>1.0.2</version>
   <vendor email="i17c.net@gmail.com" url="http://weibo.com/dxkkk">独行</vendor>
 
   <description><![CDATA[
@@ -12,6 +12,8 @@
       <br><br>The generate code will use ibatis and <a href="https://github.com/alibaba/tb_tddl" target="_blank">tddl</a> to access database.
       <br><br>If you don't like, change it your self. of course, you also can send other framework to me .
       <br><br>This tool will appeared at "Tools" menu and "Go To" menu,  shortcut key is: ctrl+shift+\
+      <br><br>jdk1.7 for 1.0.0, jdk1.6 for 1.0.1 and later.
+      <br><br>If you download slow here, please go <a href="https://github.com/i17c/AutoGenerator/tree/master/releases">https://github.com/i17c/AutoGenerator/tree/master/releases</a>
       <br>
       <br>
       <br>Auto Generator
@@ -21,15 +23,19 @@
       <br><br>生成的代码默认使用了ibatis和<a href="https://github.com/alibaba/tb_tddl" target="_blank">tddl</a>, 如果你不喜欢, 请自行生成后替换.
       <br><br>当然, 也可以反馈给我, 其他更好的建议.
       <br><br>本工具将在"Tools"菜单中和"Go To"菜单中会出现, 快捷键: ctrl+shift+\
+      <br><br>jdk1.7 for 1.0.0, jdk1.6 for 1.0.1 and later.
+      <br><br>如果你觉得下载很慢, 可以去<a href="https://github.com/i17c/AutoGenerator/tree/master/releases">https://github.com/i17c/AutoGenerator/tree/master/releases</a>
       <br>
       <br>
-      <br><img src="https://gtms02.alicdn.com/tps/i2/TB1NvCuJXXXXXblXXXXfMzNVVXX-312-375.png" border="0" width="300" height="360">
-      <br><img src="https://gtms03.alicdn.com/tps/i3/TB1GsiXJXXXXXXQaXXXqbSXOpXX-609-433.png" border="0" width="600" height="400">
-      <br><a href="http://www.laiwang.com/" target="_blank"><img src="https://i01.lw.aliimg.com/tfs/TB15JfxGXXXXXcrXFXXXCDWUVXXLAIWANGi_1_1136_1136.jpg" border="0" width="120" height="120"></a>
+      <br><img src="http://gtms02.alicdn.com/tps/i2/TB1NvCuJXXXXXblXXXXfMzNVVXX-312-375.png" border="0" width="300" height="360">
+      <br><img src="http://gtms03.alicdn.com/tps/i3/TB1GsiXJXXXXXXQaXXXqbSXOpXX-609-433.png" border="0" width="600" height="400">
+      <br><a href="http://www.laiwang.com/" target="_blank"><img src="http://i01.lw.aliimg.com/tfs/TB15JfxGXXXXXcrXFXXXCDWUVXXLAIWANGi_1_1136_1136.jpg" border="0" width="120" height="120"></a>
 
     ]]></description>
 
   <change-notes><![CDATA[
+      2015.9.1.  v1.0.2 fix errors for analy type decimal(2,3) ...<br>
+      2015.8.25. v1.0.1 support for jdk1.6, 1.0.0 may use at jdk1.7<br>
       2015.8.18. v1.0.0 project create<br>
     ]]>
   </change-notes>

@@ -53,7 +53,7 @@ public class TypeChanger {
     }
 
     public static String clean(String typeStr){
-        return typeStr.replaceAll("\\(.*\\)","").toUpperCase();
+        return typeStr.replaceAll("\\(.*\\)*","").toUpperCase();
     }
 
     public static String getType(String typeStr){

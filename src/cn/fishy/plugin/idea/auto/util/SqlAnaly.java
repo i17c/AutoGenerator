@@ -19,7 +19,19 @@ public class SqlAnaly {
         sql = sql.replaceAll("\\r", "");
         sql = sql.replaceAll("\\n\\n", "\n");
         sql = fixComment(sql);
+        sql = fixColumnType(sql);
         sql = sql.replaceAll(",", "\n");
+        System.out.println(sql);
+        return sql;
+    }
+
+    private static String fixColumnType(String sql) {
+        String regStr = "\\s+[a-z]*\\s*\\([^\\)]*,[^\\)]*\\)";
+        java.util.regex.Matcher mr = Pattern.compile(regStr, Pattern.CASE_INSENSITIVE + Pattern.DOTALL).matcher(sql);
+        while (mr.find()) {
+            String r = mr.group().replaceAll(",", "-");
+            sql = sql.replace(mr.group(), r);
+        }
         return sql;
     }
 
@@ -28,13 +40,13 @@ public class SqlAnaly {
         String regStr = "comment\\s+'([^']*,[^']*)'";
         java.util.regex.Matcher mr = Pattern.compile(regStr, Pattern.CASE_INSENSITIVE + Pattern.DOTALL).matcher(sql);
         while (mr.find()) {
-            String r = mr.group().replace(",", "-");
+            String r = mr.group().replaceAll(",", "-");
             sql = sql.replace(mr.group(), r);
         }
         regStr = "key\\s+[^(]*\\s+\\([^)]+,[^)]+\\)";
         java.util.regex.Matcher mr1 = Pattern.compile(regStr, Pattern.CASE_INSENSITIVE + Pattern.DOTALL).matcher(sql);
         while (mr1.find()) {
-            String r = mr1.group().replace(",", "-");
+            String r = mr1.group().replaceAll(",", "-");
             sql = sql.replace(mr1.group(), r);
         }
         return sql;
