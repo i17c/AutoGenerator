@@ -21,6 +21,8 @@ public class SettingManager {
             setting.setLanguage(pluginConfig.language);
             setting.setCode(pluginConfig.code);
             setting.setEncoding(pluginConfig.encoding);
+            setting.setTplUseCustom(pluginConfig.tplUseCustom);
+            setting.setTplPath(pluginConfig.tplPathCustom);
         }else {
             setting.setAuthor("duxing //change at Setting Tab");
             setting.setLanguage(Language.EN.getName());
@@ -48,6 +50,8 @@ public class SettingManager {
             pluginConfig.language = setting.getLanguage();
             pluginConfig.encoding = setting.getEncoding();
             pluginConfig.code = setting.getCode();
+            pluginConfig.tplPathCustom = setting.getTplPath();
+            pluginConfig.tplUseCustom = setting.getTplUseCustom();
         }
     }
 
@@ -98,6 +102,5 @@ public class SettingManager {
 
         }
     }
-
 
 }

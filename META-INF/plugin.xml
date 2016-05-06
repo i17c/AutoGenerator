@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>com.fishy.plugin.idea.auto</id>
   <name>Auto Generator</name>
-  <version>1.0.2</version>
+  <version>1.1.0</version>
   <vendor email="i17c.net@gmail.com" url="http://weibo.com/dxkkk">独行</vendor>
 
   <description><![CDATA[
@@ -34,6 +34,13 @@
     ]]></description>
 
   <change-notes><![CDATA[
+      2016.5.5. v1.1.0 upgrade template engine to velocity and custom template<br>
+      2016.1.23. v1.0.8 persistent the sql in project config<br>
+      2016.1.12. v1.0.7 fix text sql line analy<br>
+      2016.1.6. v1.0.6 fix path exception & comment null exception<br>
+      2015.12.30. v1.0.5 fix column null bug<br>
+      2015.12.1.  v1.0.4 add freemarker<br>
+      2015.9.11.  v1.0.3 fix errors for analy column which have no sign `<br>
       2015.9.1.  v1.0.2 fix errors for analy type decimal(2,3) ...<br>
       2015.8.25. v1.0.1 support for jdk1.6, 1.0.0 may use at jdk1.7<br>
       2015.8.18. v1.0.0 project create<br>

@@ -40,7 +40,7 @@ public class JavaDaoGenerator extends BaseGenerator implements DaoGenerator {
         map.put("importList", importList);
         Setting setting = SettingManager.get();
         map.put("daoLogicDelete", setting.isDaoLogicDelete());
-        return generate("tpl/"+getCode().getTplPath()+"/dao.ftl", map);
+        return super.generate(map);
     }
 
     @Override

@@ -34,6 +34,6 @@ public class JavaDAOXmlGenerator extends BaseGenerator implements DAOXmlGenerato
         map.put("daoImplClassName",daoImplClassName);
         Setting setting = SettingManager.get();
         map.put("encoding", setting.getEncoding());
-        return generate("tpl/java/daoxml.ftl", map);
+        return generate(map);
     }
 }

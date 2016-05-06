@@ -9,16 +9,22 @@ import cn.fishy.plugin.idea.auto.domain.Encoding;
 import cn.fishy.plugin.idea.auto.domain.Language;
 import cn.fishy.plugin.idea.auto.domain.Setting;
 import cn.fishy.plugin.idea.auto.domain.SqlInfo;
+import cn.fishy.plugin.idea.auto.domain.TemplateConfig;
 import cn.fishy.plugin.idea.auto.generator.GeneratorAdaptor;
 import cn.fishy.plugin.idea.auto.storage.Env;
+import cn.fishy.plugin.idea.auto.storage.PluginProjectConfigHolder;
 import cn.fishy.plugin.idea.auto.storage.SettingManager;
+import cn.fishy.plugin.idea.auto.storage.domain.PluginProjectConfig;
 import cn.fishy.plugin.idea.auto.util.FileWriter;
 import cn.fishy.plugin.idea.auto.util.SqlAnaly;
+import cn.fishy.plugin.idea.auto.util.TemplateUtil;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
+import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.table.JBTable;
 import org.apache.commons.lang.StringUtils;
@@ -26,8 +32,6 @@ import org.apache.commons.lang.StringUtils;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.AncestorEvent;
-import javax.swing.event.AncestorListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
@@ -37,12 +41,11 @@ import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
@@ -121,6 +124,11 @@ public class GeneratorMainDialog extends JDialog {
     private JTextField INPUT_author;
     private JLabel TEXT_info;
 
+    private JCheckBox CHK_useCustomTpl;
+    private JTextField INPUT_tplPath;
+    private JLabel TEXT_useCustomTpl;
+    private JLabel TEXT_customTplPath;
+    private JButton BTN_selTplPath;
 
     /**
      * Notice
@@ -135,6 +143,7 @@ public class GeneratorMainDialog extends JDialog {
      * about
      */
     private JLabel LABEL_about;
+    private JButton BTN_tplInit;
 
 
     private Column primaryColumn;
@@ -145,28 +154,26 @@ public class GeneratorMainDialog extends JDialog {
     JBTable jtable;
     static String[] colNames = ColumnEnum.getColumnNames(); //表头信息
     String path;
+    private static final Logger logger = Logger.getInstance(GeneratorMainDialog.class);
 
     public GeneratorMainDialog() {
         colorScheme = EditorColorsManager.getInstance().getGlobalScheme();
         background = colorScheme.getDefaultBackground();
+        PluginProjectConfig pluginProjectConfig = PluginProjectConfigHolder.getPluginProjectConfig();
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(BTN_analy);
         setBackground(background);
 //        INPUT_sql.setBackground(background);
 //        TAB_PANEL.setBackground(background);
-        String sql = "INPUT SQL HERE JUST LIKE BELOW  \n\n ================================================ \n\nCREATE TABLE `app_model` ( `ID` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id for number',  `app` varchar(20) NOT NULL COMMENT 'application name',   `model` varchar(20) NOT NULL COMMENT 'application model',   PRIMARY KEY (`id`),    KEY `app` (`app`,`model`) ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='application model table' AUTO_INCREMENT=2;\n" +
-                "\n" +
-                " ================================================ \n" +
-                "\n";
-
 //        INPUT_sql.setText(new String(sql.getBytes(Charset.forName("UTF-8")), getIDECharset()));
-        INPUT_sql.setText(sql);
-
+        if(pluginProjectConfig!=null) {
+            INPUT_sql.setText(pluginProjectConfig.sql);
+        }
         final Setting setting = SettingManager.get();
 
         applySettings(setting,false);
-
+        showTplSelect();
 
 /*
         BTN_exit.addActionListener(new ActionListener() {
@@ -225,6 +232,37 @@ public class GeneratorMainDialog extends JDialog {
                     SettingManager.applyPrjPath(file.getPath());
                     System.out.println(file.getPath());
                 }
+            }
+        });
+
+        BTN_selTplPath.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chooseFolderOnlyDescriptor.setTitle("Select Path");
+                chooseFolderOnlyDescriptor.setDescription("Select The Path To Save The Custom Templates");
+                VirtualFile file = FileChooser.chooseFile(chooseFolderOnlyDescriptor, Env.project, null);
+                if (file != null) {
+                    INPUT_tplPath.setText(file.getPath());
+                    System.out.println(file.getPath());
+                }
+            }
+        });
+
+        BTN_tplInit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String tplPath = INPUT_tplPath.getText();
+                boolean r = checkTplPath(tplPath);
+                if(r){
+                    initTemplates(tplPath);
+                }
+            }
+        });
+
+        CHK_useCustomTpl.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showTplSelect();
             }
         });
 
@@ -304,6 +342,92 @@ public class GeneratorMainDialog extends JDialog {
 
 
 
+    }
+
+    private void initTemplates(String tplPath) {
+        for(Code c:Code.values()) {
+            if(!tplPath.endsWith("/")){
+                tplPath+="/";
+            }
+            String path = tplPath + c.getTplPath();
+            System.out.println(path);
+            checkThePath(path);
+            for (GenerateType gt : GenerateType.values()) {
+                if(gt.equals(GenerateType.ALL))continue;
+                String name = gt.getName().toLowerCase();
+                String file = path + name + TemplateConfig.TEMPLATE_EXT;
+                String content = null;
+                try {
+                    content = TemplateUtil.getOriginTplContent(c, gt);
+                    if(content==null)content="";
+                    File f1 = new File(file);
+                    if(f1.exists()) {
+                        String c1 = FileUtil.loadFile(f1,"UTF-8");
+                        if(stringEqual(c1,content)){
+                            continue;
+                        }else{
+                            renameFile(f1,0);
+                        }
+                    }
+                    FileUtil.writeToFile(f1,content);
+                } catch (Exception e) {
+                    logger.error("ERROR TO SAVE FILE: "+ file + ", content: "+content,e);
+                }
+            }
+            TEXT_msg.setText("tpl inited!");
+        }
+    }
+
+    private boolean stringEqual(String c1, String content) {
+//       return  c1.replaceAll("\\s","").equals(content.replaceAll("\\s",""));
+       return  c1.equals(content);
+    }
+
+    private void renameFile(File f1, int i) {
+        String p1 = f1.getPath();
+        File f2 = new File(p1+"_bak"+i);
+        if(f2.exists()){
+            i=i+1;
+            renameFile(f1,i);
+        }else{
+            boolean r = f1.renameTo(f2);
+            if(!r){
+                logger.error("RENAME FILE ERROR:"+f2.getPath());
+            }
+        }
+    }
+
+    private void checkThePath(String path) {
+        try {
+            File f = new File(path);
+            if (!f.exists()) {
+                f.mkdirs();
+            }
+        }catch (Exception e){
+            logger.error("mkdirs ERROR",e);
+        }
+    }
+
+    private boolean checkTplPath(String tplPath) {
+        if(tplPath==null || tplPath.trim().equals("")){
+            TEXT_msg.setText("please set the custom tpl path!");
+            return false;
+        }else{
+            File file = new File(tplPath);
+            boolean r = file.isDirectory();
+            if(!r){
+                TEXT_msg.setText("the custom tpl path is not a directory!");
+            }
+            return r;
+        }
+    }
+
+    private void showTplSelect() {
+        boolean r = CHK_useCustomTpl.isSelected();
+        TEXT_customTplPath.setVisible(r);
+        BTN_selTplPath.setVisible(r);
+        INPUT_tplPath.setVisible(r);
+        BTN_tplInit.setVisible(r);
     }
 
     private void checkManagerUseBO() {
@@ -513,7 +637,8 @@ public class GeneratorMainDialog extends JDialog {
                     c.setProperty((String) tm.getValueAt(i, ColumnEnum.ClassProperty.getOrder()));
                     c.setType((String) tm.getValueAt(i, ColumnEnum.CodeType.getOrder()));
                     c.setIsPrimaryKey("Y".equals((String) tm.getValueAt(i, ColumnEnum.Primary.getOrder())));
-                    c.setComment((String) tm.getValueAt(i, ColumnEnum.Comment.getOrder()));
+                    String comt = (String) tm.getValueAt(i, ColumnEnum.Comment.getOrder());
+                    c.setComment(StringUtils.isBlank(comt)?c.getProperty():comt);
                     if(c.isPrimaryKey()){
                         primaryColumn = c;
                     }
@@ -574,6 +699,12 @@ public class GeneratorMainDialog extends JDialog {
                 RADIO_languageChs.setSelected(false);
             }
         }
+        if(setting.getTplUseCustom()!=null){
+            CHK_useCustomTpl.setSelected(setting.getTplUseCustom());
+        }
+        if(setting.getTplPath()!=null && !setting.getTplPath().equals("")) {
+            INPUT_tplPath.setText(setting.getTplPath());
+        }
         if(!isSetting) {
             INPUT_author.setText(setting.getAuthor());
             if(setting.isOverwrite()!=null){CHK_overwrite.setSelected(setting.isOverwrite());}
@@ -595,6 +726,10 @@ public class GeneratorMainDialog extends JDialog {
 
         SqlInfo sqlInfo  = SqlAnaly.analy(text);
         if(sqlInfo.isValid()) {
+            PluginProjectConfig pluginProjectConfig = PluginProjectConfigHolder.getPluginProjectConfig();
+            if(pluginProjectConfig!=null){
+                pluginProjectConfig.sql = text;
+            }
             showNextTab(sqlInfo);
             TAB_PANEL.setSelectedIndex(1);
             TEXT_msg.setText("");
@@ -731,8 +866,20 @@ public class GeneratorMainDialog extends JDialog {
             code = Code.SCALA;
         }
         Setting settingSave = new Setting(author,encoding,code);
+        boolean useTpl = CHK_useCustomTpl.isSelected();
+        settingSave.setTplUseCustom(useTpl);
+        if(useTpl) {
+            String tp = INPUT_tplPath.getText();
+            if(tp==null || tp.trim().equals("")){
+                TEXT_msg.setText("please set the custom tpl path!");
+            }else{
+                settingSave.setTplPath(tp);
+            }
+        }
+
         SettingManager.applyApp(settingSave);
         TEXT_msg.setText("apply success!");
+
 //        applySettings(settingSave, true);
     }
 

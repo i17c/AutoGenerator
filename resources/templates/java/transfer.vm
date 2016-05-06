@@ -1,0 +1,64 @@
+package ${package};
+
+#foreach($import in $!{importList})
+#if("$!{import}"!="")
+import $!{import};
+#end
+#end
+
+/**
+ * ${transferClassName}
+ *
+ * User: ${user}
+ * Date: ${today}
+ * Generate by ${autoName}
+ * Powered by duxing@Taobao
+ */
+
+public class ${transferClassName}{
+
+    public static ${boClassName} toBO(${doClassName} d) {
+        if (d == null) return null;
+        ${boClassName} bo = new ${boClassName}();
+#foreach($!{column} in $!{columnList})
+        bo.set${column.key}(d.get${column.key}());
+#end
+        return bo;
+    }
+
+    public static ${doClassName} toDO(${boClassName} bo) {
+        if (bo == null) return null;
+        ${doClassName} d = new ${doClassName}();
+#foreach($!{column} in $!{columnList})
+        d.set${column.key}(bo.get${column.key}());
+#end
+        return d;
+    }
+
+    public static List<${boClassName}> toBOList(List<${doClassName}> doList){
+        if(doList == null) {
+            return new ArrayList<${boClassName}>();
+        }
+        List<${boClassName}> boList = new ArrayList<${boClassName}>();
+        for(${doClassName} d : doList) {
+            if(d != null) {
+                boList.add(${transferClassName}.toBO(d));
+            }
+        }
+        return boList;
+    }
+
+    public static List<${doClassName}> toDOList(List<${boClassName}> boList){
+        if(boList == null) {
+            return new ArrayList<${doClassName}>();
+        }
+        List<${doClassName}> doList = new ArrayList<${doClassName}>();
+        for(${boClassName} bo : boList) {
+            if(bo != null) {
+                doList.add(${transferClassName}.toDO(bo));
+            }
+        }
+        return doList;
+    }
+
+}

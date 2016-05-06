@@ -36,7 +36,7 @@ public class JavaSqlmapGenerator extends BaseGenerator implements SqlmapGenerato
         map.put("daoLogDelete", setting.isDaoLogicDelete());
         map.put("daoUseSequence", setting.isDaoUseSequence());
         map.put("pagerQuery", setting.isPagerQuery());
-        return generate("tpl/java/sqlmap.ftl", map);
+        return generate(map);
     }
 
     private boolean haveKey(List<Column> columnList,String name) {

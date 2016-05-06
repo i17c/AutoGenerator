@@ -11,10 +11,6 @@ import java.util.Map;
  * Date: 2015.08.14 23:23
  */
 public class JavaBaseDAOGenerator extends BaseGenerator {
-    public String generate() {
-        Map<String,Object> map = initMap();
-        return generate("tpl/java/basedao.ftl", map);
-    }
 
     @Override
     public Code getCode() {

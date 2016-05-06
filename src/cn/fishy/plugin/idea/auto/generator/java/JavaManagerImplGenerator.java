@@ -57,7 +57,7 @@ public class JavaManagerImplGenerator extends BaseGenerator implements ManagerIm
         }
 
         map.put("importList", importList);
-        return generate("tpl/"+getCode().getTplPath()+"/managerimpl.ftl", map);
+        return generate(map);
     }
 
     @Override

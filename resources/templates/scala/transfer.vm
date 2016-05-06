@@ -1,0 +1,73 @@
+package ${package}
+
+#foreach($import in $!{importList})
+#if("$!{import}"!="")
+import $!{import}
+#end
+#end
+import scala.collection.JavaConversions._
+
+/**
+ * ${transferClassName}
+ *
+ * User: ${user}
+ * Date: ${today}
+ * Generate by ${autoName}
+ * Powered by duxing@Taobao
+ */
+object ${transferClassName}{
+    /**
+     * change do to bo
+     */
+    def toBO(d: ${doClassName}): ${boClassName} = {
+        if (d == null) return null
+        val bo: ${boClassName} = new ${boClassName}()
+#foreach($!{column} in $!{columnList})
+        bo.set${column.key}(d.get${column.key}())
+#end
+        bo
+    }
+
+    /**
+     * change bo to do
+     */
+    def toDO(bo: ${boClassName}): ${doClassName} = {
+        if (bo == null) return null
+        val d: ${doClassName} = new ${doClassName}()
+#foreach($!{column} in $!{columnList})
+        d.set${column.key}(bo.get${column.key}())
+#end
+        d
+    }
+    /**
+     * change doList to boList
+     */
+    def toBOList(doList: util.List[${doClassName}]): util.List[${boClassName}] = {
+        if(doList == null) {
+            return new util.ArrayList[${boClassName}]()
+        }
+        val boList: util.List[${boClassName}] = new util.ArrayList[${boClassName}]()
+        doList.foreach(d => {
+            if(d != null) {
+                boList.add(${transferClassName}.toBO(d))
+            }
+        })
+        boList
+    }
+    /**
+     * change boList to doList
+     */
+    def toDOList(boList: util.List[${boClassName}]): util.List[${doClassName}] = {
+        if(boList == null) {
+            return new util.ArrayList[${doClassName}]()
+        }
+        val doList: util.List[${doClassName}] = new util.ArrayList[${doClassName}]()
+        boList.foreach(bo => {
+            if(bo != null) {
+                doList.add(${transferClassName}.toDO(bo))
+            }
+        })
+        doList
+    }
+
+}

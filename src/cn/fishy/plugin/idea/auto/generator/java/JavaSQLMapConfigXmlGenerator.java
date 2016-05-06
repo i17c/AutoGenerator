@@ -30,6 +30,6 @@ public class JavaSQLMapConfigXmlGenerator  extends BaseGenerator implements SQLM
         map.put("tableName",tableName);
         Setting setting = SettingManager.get();
         map.put("encoding", setting.getEncoding());
-        return generate("tpl/java/sqlmapconfig.ftl", map);
+        return generate(map);
     }
 }

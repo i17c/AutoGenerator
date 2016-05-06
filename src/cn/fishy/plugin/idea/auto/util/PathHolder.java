@@ -37,6 +37,7 @@ public class PathHolder {
 
     private static void analyJavaPath(String path) {
         String sign = code.getSign();
+        String signTest = code.getSignTest();
         int index= path.indexOf(sign);
         //表示src/main/xxx标记存在
         if(index>-1){
@@ -44,6 +45,14 @@ public class PathHolder {
             PathHolder.pkg = pkg(path.substring(index + sign.length()));
             PathHolder.resourcesPath = path.substring(0,index)+code.getResources()+"/";
             return;
+        }else{
+            index= path.indexOf(signTest);
+            if(index>-1){
+                PathHolder.javaPath = path.substring(0,index+signTest.length());
+                PathHolder.pkg = pkg(path.substring(index + signTest.length()));
+                PathHolder.resourcesPath = path.substring(0,index)+code.getResources()+"/";
+                return;
+            }
         }
         //不存在的情况先要去掉project目录部分
         String projectPath = "";
@@ -59,19 +68,23 @@ public class PathHolder {
         String c = code.getName().toLowerCase();
         index = tmpPath.lastIndexOf("/"+c+"/");
         if(index>-1){
-            PathHolder.javaPath = projectPath+path.substring(0,index+c.length()+2);
-            PathHolder.pkg = pkg(path.substring(index + c.length() + 2));
-            PathHolder.resourcesPath = projectPath+path.substring(0,index)+"/resources/";
+            PathHolder.javaPath = projectPath+tmpPath.substring(0,index+c.length()+2);
+            PathHolder.pkg = pkg(tmpPath.substring(index + c.length() + 2));
+            PathHolder.resourcesPath = projectPath+tmpPath.substring(0,index)+"/resources/";
             return;
         }
 
         for(String tail:webTailList){
             index = tmpPath.lastIndexOf("/"+tail+"/");
             if(index>-1){
-                PathHolder.javaPath = projectPath+path.substring(0,index+1);
-                PathHolder.pkg = pkg(path.substring(index + 1));
-                int l = PathHolder.javaPath.lastIndexOf("/");
-                PathHolder.resourcesPath = projectPath+path.substring(0,l)+"/resources/";
+                PathHolder.javaPath = projectPath+tmpPath.substring(0,index+1);
+                PathHolder.pkg = pkg(tmpPath.substring(index + 1));
+                String javaPathNoTail = PathHolder.javaPath;
+                if(javaPathNoTail.endsWith("/")){
+                    javaPathNoTail = javaPathNoTail.substring(0,javaPathNoTail.length()-1);
+                }
+                int l = javaPathNoTail.lastIndexOf("/");
+                PathHolder.resourcesPath = javaPathNoTail.substring(0,l)+"/resources/";
                 return;
             }
         }

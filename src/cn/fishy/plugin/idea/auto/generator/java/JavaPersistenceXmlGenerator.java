@@ -33,6 +33,6 @@ public class JavaPersistenceXmlGenerator extends BaseGenerator implements Persis
         map.put("tablePropertyName", NameUtil.propertyName(tableName));
         Setting setting = SettingManager.get();
         map.put("encoding", setting.getEncoding());
-        return generate("tpl/java/persistence.ftl", map);
+        return generate(map);
     }
 }

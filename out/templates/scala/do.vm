@@ -1,0 +1,29 @@
+package ${package}
+
+import scala.beans.BeanProperty
+import java.util
+#foreach($import in $!{importList})
+#if("$!{import}"!="")
+import $!{import}
+#end
+#end
+
+/**
+ * ${className}
+ *
+ * User: ${user}
+ * Date: ${today}
+ * Generate by ${autoName}
+ * Powered by duxing@Taobao
+ */
+@SerialVersionUID(-1L)
+class ${className}#if($pagerQuery) extends BaseQuery#else extends Serializable#end{
+
+    #foreach($!{column} in $!{columnList})
+    /**
+     * ${column.comment}
+     */
+    @BeanProperty var ${column.property}: ${column.type} = _
+    #end
+
+}

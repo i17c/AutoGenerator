@@ -27,7 +27,7 @@ public class JavaTransferGenerator extends BaseGenerator implements TransferGene
         importList.add(PathHolder.impt(GenerateType.DO, doClassName));
         importList.add(PathHolder.impt(GenerateType.BO, boClassName));
         map.put("importList", importList);
-        return generate("tpl/"+getCode().getTplPath()+"/transfer.ftl", map);
+        return generate(map);
     }
 
     @Override

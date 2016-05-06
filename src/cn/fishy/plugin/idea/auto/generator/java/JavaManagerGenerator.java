@@ -43,7 +43,7 @@ public class JavaManagerGenerator extends BaseGenerator implements ManagerGenera
             map.put("primaryKeyType", "Long");
         }
         map.put("importList", importList);
-        return generate("tpl/"+getCode().getTplPath()+"/manager.ftl", map);
+        return generate(map);
     }
 
     @Override

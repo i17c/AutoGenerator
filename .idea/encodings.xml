@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="jar://$MAVEN_REPOSITORY$/com/alitrip/trade/ttp/ttp-client/1.6.3-SNAPSHOT/ttp-client-1.6.3-20151208.063417-2-sources.jar!/com/alitrip/trade/ttp/request/param/activity/NTrippeActParam.java" charset="GBK" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

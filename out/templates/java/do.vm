@@ -1,0 +1,39 @@
+package ${package};
+
+#foreach($import in $!{importList})
+#if("$!{import}"!="")
+import $!{import};
+#end
+#end
+/**
+ * ${className}
+ *
+ * User: ${user}
+ * Date: ${today}
+ * Generate by ${autoName}
+ * Powered by duxing@Taobao
+ */
+
+public class ${className}#if($pagerQuery) extends BaseQuery#else implements Serializable#end{
+    private static final long serialVersionUID = -1L;
+
+    #foreach($!{column} in $!{columnList})
+    /**
+     * ${column.comment}
+     */
+    private ${column.type} ${column.property};
+    #end
+
+    #foreach($!{column} in $!{columnList})
+    /**
+     * ${column.property} getter & setter
+     */
+    public ${column.type} get${column.key}() {
+        return ${column.property};
+    }
+    public void set${column.key}(${column.type} ${column.property}){
+        this.${column.property} = ${column.property};
+    }
+
+    #end
+}

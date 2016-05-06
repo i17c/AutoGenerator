@@ -47,7 +47,7 @@ public class JavaDaoImplGenerator extends BaseGenerator implements DaoImplGenera
         Setting setting = SettingManager.get();
         map.put("daoUseSequence", setting.isDaoUseSequence());
         map.put("daoLogicDelete", setting.isDaoLogicDelete());
-        return generate("tpl/"+getCode().getTplPath()+"/daoimpl.ftl", map);
+        return generate(map);
     }
 
     @Override

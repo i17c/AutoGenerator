@@ -250,10 +250,12 @@ public class GeneratorAdaptor {
 
 
     public byte[] r(String s){
+        if(s==null)return null;
         return s.getBytes(Env.encodeTo);
     }
 
     public String s(String s){
+        if(s==null)return null;
         return new String(s.getBytes(Env.encodeTo),Env.encodeFrom);
     }
 

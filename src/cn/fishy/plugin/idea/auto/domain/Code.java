@@ -5,16 +5,18 @@ package cn.fishy.plugin.idea.auto.domain;
  * Date: 2015.08.12 2:09
  */
 public enum Code {
-    JAVA("JAVA",".java","src/main/java","src/main/resources"),SCALA("SCALA",".scala","src/main/scala","src/main/resources");
+    JAVA("JAVA",".java","src/main/java","src/test/java","src/main/resources"),SCALA("SCALA",".scala","src/main/scala","src/test/scala","src/main/resources");
     private String name;
     private String ext;
     private String sign;
+    private String signTest;
     private String resources;
 
-    Code(String name,String ext,String sign,String resources) {
+    Code(String name,String ext,String sign,String signTest,String resources) {
         this.name = name;
         this.ext = ext;
         this.sign = sign;
+        this.signTest = signTest;
         this.resources = resources;
     }
 
@@ -27,7 +29,7 @@ public enum Code {
     }
 
     public String getTplPath() {
-        return name.toLowerCase();
+        return name.toLowerCase()+"/";
     }
 
     public String getSign() {
@@ -48,4 +50,7 @@ public enum Code {
         return null;
     }
 
+    public String getSignTest() {
+        return signTest;
+    }
 }

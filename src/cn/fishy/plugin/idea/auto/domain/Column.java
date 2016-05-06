@@ -68,27 +68,30 @@ public class Column {
     public String toString(){
         String r = "{";
         if(name!=null){
-            r+="\"name\"=\""+name+"\"";
+            r+="\"name\":\""+name+"\"";
         }
         if(property!=null){
             if(!r.equals("{")){r+=",";}
-            r+="\"property\"=\""+property+"\"";
+            r+="\"property\":\""+property+"\"";
         }
         if(type!=null){
             if(!r.equals("{")){r+=",";}
-            r+="\"type\"=\""+type+"\"";
+            r+="\"type\":\""+type+"\"";
         }
         if(typeStr!=null){
             if(!r.equals("{")){r+=",";}
-            r+="\"typeStr\"=\""+typeStr+"\"";
+            r+="\"typeStr\":\""+typeStr+"\"";
         }
         if(comment!=null){
             if(!r.equals("{")){r+=",";}
-            r+="\"comment\"=\""+comment+"\"";
+            r+="\"comment\":\""+comment+"\"";
+        }else{
+            if(!r.equals("{")){r+=",";}
+            r+="\"comment\":\""+property+"\"";
         }
         if(isPrimaryKey){
             if(!r.equals("{")){r+=",";}
-            r+="\"isPrimaryKey\"=\""+isPrimaryKey+"\"";
+            r+="\"isPrimaryKey\":\""+isPrimaryKey+"\"";
         }
         r+="}";
         return r;
@@ -109,9 +112,9 @@ public class Column {
         this.property = property;
     }
 
-    public String isPrimaryWithSet(String primary){
-        this.isPrimaryKey = this.getName().toLowerCase().equals(primary.toLowerCase());
-        return this.isPrimaryKey()?"Y":"";
+    public String isPrimaryWithSet(String primary) {
+        this.isPrimaryKey = primary != null && this.getName().toLowerCase().equals(primary.toLowerCase());
+        return this.isPrimaryKey() ? "Y" : "";
     }
 
     public String isPrimary(){

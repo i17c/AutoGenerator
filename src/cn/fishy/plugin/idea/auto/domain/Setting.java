@@ -15,6 +15,14 @@ public class Setting {
     private String code;
     //输出路径
     private String path;
+    /**
+     * 模板路径
+     */
+    private String tplPath;
+    /**
+     * 是否使用自定义模板
+     */
+    private Boolean tplUseCustom;
 
     public Boolean daoLogicDelete;
     public Boolean managerUseBO;
@@ -133,5 +141,21 @@ public class Setting {
 
     public void setGenerateBase(Boolean generateBase) {
         this.generateBase = generateBase;
+    }
+
+    public String getTplPath() {
+        return tplPath;
+    }
+
+    public void setTplPath(String tplPath) {
+        this.tplPath = tplPath;
+    }
+
+    public Boolean getTplUseCustom() {
+        return tplUseCustom;
+    }
+
+    public void setTplUseCustom(Boolean tplUseCustom) {
+        this.tplUseCustom = tplUseCustom;
     }
 }

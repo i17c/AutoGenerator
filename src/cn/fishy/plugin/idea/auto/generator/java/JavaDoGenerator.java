@@ -31,7 +31,7 @@ public class JavaDoGenerator extends BaseGenerator implements DoGenerator {
             map.put("pagerQuery",false);
         }
         map.put("importList", importList);
-        return generate("tpl/"+getCode().getTplPath()+"/do.ftl", map);
+        return super.generate(map);
     }
 
     @Override

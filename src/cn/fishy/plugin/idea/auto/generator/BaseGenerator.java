@@ -5,6 +5,7 @@ import cn.fishy.plugin.idea.auto.constant.ImportMapHolder;
 import cn.fishy.plugin.idea.auto.domain.Code;
 import cn.fishy.plugin.idea.auto.domain.Column;
 import cn.fishy.plugin.idea.auto.domain.Setting;
+import cn.fishy.plugin.idea.auto.domain.TemplateConfig;
 import cn.fishy.plugin.idea.auto.storage.SettingManager;
 import cn.fishy.plugin.idea.auto.util.PathHolder;
 import cn.fishy.plugin.idea.auto.util.TemplateUtil;
@@ -29,8 +30,21 @@ public abstract class BaseGenerator {
         deleteKeyList.add("DELETED");
     }
 
+    public String generate() {
+        Map<String,Object> map = initMap();
+        return generate(getTemplate(), map);
+    }
+
+    private String getTemplate() {
+        return TemplateConfig.getTemplate(getCode(),generateType());
+    }
+
+    public String generate(Map<String, Object> map) {
+        return generate(getTemplate(),map);
+    }
+
     public String generate(String tpl, Map<String, Object> map) {
-        return TemplateUtil.parse(TemplateUtil.getTemplate(tpl), map);
+        return TemplateUtil.parseByVm(tpl, map);
     }
     
     public abstract Code getCode();
@@ -88,4 +102,5 @@ public abstract class BaseGenerator {
         map.put("package", PathHolder.pkg(generateType()));
         return map;
     }
+
 }
