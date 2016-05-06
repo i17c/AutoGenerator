@@ -1,5 +1,14 @@
 # AutoGenerator
 
+### 插件最新更新
+
+1.1.0 - 2016.5.6 升级了模板引擎(从freemarker到velocity), 支持用户自定义.
+
+
+最新版本下载: [AutoGenerator-1.1.0.zip](https://github.com/i17c/AutoGenerator/raw/master/releases/AutoGenerator-1.1.0.zip)
+
+自定义模板方式-> Settings -> 勾选 "Use Custom TPL"后设置 "Custom TPL Path", 然后初始化"Templates Init"
+
 
 ### 插件说明
 
